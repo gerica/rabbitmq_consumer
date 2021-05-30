@@ -1,10 +1,10 @@
-import * as example from './example.js';
+import * as message from './messageResolver.js';
 
 export default {
   Query: {
-    ...example.query,
+    ...message.query,
   },
   Mutation: {
-    ...example.mutation,
+    ...message.mutation,
   },
 };

@@ -1,0 +1,25 @@
+"""
+Mensagem de entrada
+"""
+input MessageInput {
+  msg: String
+}
+
+"""
+Message de resultado
+"""
+type MessageResult {
+  id: String
+  message: String
+}
+
+type Query {
+  """
+  # Resultado
+  """
+  getMessages: MessageResult
+}
+
+type Mutation {
+  sendMessage(input: MessageInput): String
+}
