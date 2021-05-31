@@ -5,16 +5,15 @@ const messageServiceMQ = new MessageServiceMQ();
 
 class MessageService {
   static async sendMessage({ msg }) {
-    logger.info('sendMessage');
-    logger.info(msg);
-
+    logger.info(msg, 'MessageService:sendMessage');
     await messageServiceMQ.sendToQueueWork(msg);
     return 'Success';
   }
 
   static async getMessages() {
-    logger.info('get Message');
-    const result = await messageServiceMQ.fetchQueueWork();
+    logger.info('MessageService:getMessages');
+    const result = await messageServiceMQ.getQueueWork();
+
     return result;
   }
 }

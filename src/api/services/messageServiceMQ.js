@@ -35,8 +35,8 @@ class MessageServiceMQ {
     }
   }
 
-  async fetchQueueWork() {
-    logger.info('Init work.');
+  async consumeQueueWork() {
+    logger.info('MessageServiceMQ:consumeQueueWork');
     let result;
     try {
       const { connection, channel } = await this.createConnection();
@@ -70,6 +70,27 @@ class MessageServiceMQ {
       //     noAck: false,
       //   });
       //   await this.thread.sleepTest(result);
+      this.closeConnection(channel, connection);
+      return result;
+    } catch (error) {
+      this.handleError(error);
+      throw error;
+    }
+  }
+
+  async getQueueWork() {
+    logger.info('MessageServiceMQ:getQueueWork');
+    let result;
+    try {
+      const { connection, channel } = await this.createConnection();
+
+      const message = await channel.get(MQ_QUEUE_WORK_MSG_RESPONSE); // get one msg at a time
+      if (message) {
+        logger.info(' [x] Received %s', message.content.toString());
+        result = JSON.parse(message.content.toString());
+        channel.ack(message);
+      }
+
       this.closeConnection(channel, connection);
       return result;
     } catch (error) {
