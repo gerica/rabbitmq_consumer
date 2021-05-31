@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 /* eslint-disable class-methods-use-this */
 import amqp from 'amqplib';
 import logger from '../../utils/logger.js';
@@ -12,7 +13,7 @@ class MessageServiceMQ {
   }
 
   async sendToQueueWork(payload) {
-    logger.info('Send to MQ, message.');
+    logger.info('MessageServiceMQ:sendToQueueWork');
 
     try {
       const { connection, channel } = await this.createConnection();
@@ -27,7 +28,7 @@ class MessageServiceMQ {
       channel.sendToQueue(queue, data, {
         persistent: true,
       });
-      logger.info(' [x] Sent ');
+      logger.debug(' [x] Sent ');
       this.closeConnection(channel, connection);
     } catch (error) {
       this.handleError(error);
@@ -97,6 +98,37 @@ class MessageServiceMQ {
       this.handleError(error);
       throw error;
     }
+  }
+
+  async getAllQueueWork() {
+    logger.info('MessageServiceMQ:getAllQueueWork');
+    const list = [];
+    try {
+      const { connection, channel } = await this.createConnection();
+
+      let result;
+      do {
+        result = await this.getMessage(channel);
+        list.push(result);
+      } while (result);
+
+      this.closeConnection(channel, connection);
+      return list;
+    } catch (error) {
+      this.handleError(error);
+      throw error;
+    }
+  }
+
+  async getMessage(channel) {
+    let result;
+    const message = await channel.get(MQ_QUEUE_WORK_MSG_RESPONSE); // get one msg at a time
+    if (message) {
+      logger.info(' [x] Received %s', message.content.toString());
+      result = JSON.parse(message.content.toString());
+      channel.ack(message);
+    }
+    return result;
   }
 
   async createConnection() {

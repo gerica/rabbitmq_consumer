@@ -17,7 +17,8 @@ type Query {
   """
   # Resultado
   """
-  getMessages: MessageResult
+  getMessage: MessageResult
+  getAllMessages: [MessageResult]
 }
 
 type Mutation {

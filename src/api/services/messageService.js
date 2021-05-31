@@ -10,9 +10,16 @@ class MessageService {
     return 'Success';
   }
 
-  static async getMessages() {
+  static async getMessage() {
     logger.info('MessageService:getMessages');
     const result = await messageServiceMQ.getQueueWork();
+
+    return result;
+  }
+
+  static async getAllMessages() {
+    logger.info('MessageService:getMessages');
+    const result = await messageServiceMQ.getAllQueueWork();
 
     return result;
   }

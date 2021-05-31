@@ -1,7 +1,8 @@
 import { MessageService } from '../../api/services/index.js';
 
 const query = {
-  getMessages: () => MessageService.getMessages(),
+  getMessage: () => MessageService.getMessage(),
+  getAllMessages: () => MessageService.getAllMessages(),
 };
 const mutation = {
   sendMessage: (_, { input }) => MessageService.sendMessage(input),
