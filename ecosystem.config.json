@@ -29,7 +29,7 @@
       "ref": "origin/main",
       "repo": "git@github.com:gerica/rabbitmq_consumer.git",
       "path": "/home/ubuntu/projects/radiolife",
-      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.json"
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.json --only RL-RabbitMQ-Consumer"
     },
     "production-local": {
       "user": "ubuntu",
@@ -37,7 +37,7 @@
       "ref": "origin/main",
       "repo": "git@github.com:gerica/rabbitmq_consumer.git",
       "path": "/home/ubuntu/projects/radiolife",
-      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.json"
+      "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.json --only RL-RabbitMQ-Consumer"
     }
   }
 }
