@@ -1,9 +1,0 @@
-[1622583728810] [32mINFO[39m (47578 on Rogerios-MacBook-Pro.local): [36mConfigured logger[39m
-Enabling inline tracing for this federated service. To disable, use ApolloServerPluginInlineTraceDisabled.
-[1622583729257] [32mINFO[39m (47578 on Rogerios-MacBook-Pro.local): [36mhttp://localhost:4004/[39m
-[1622583758688] [32mINFO[39m (47706 on Rogerios-MacBook-Pro.local): [36mConfigured logger[39m
-Enabling inline tracing for this federated service. To disable, use ApolloServerPluginInlineTraceDisabled.
-[1622583759261] [32mINFO[39m (47706 on Rogerios-MacBook-Pro.local): [36mhttp://localhost:4004/[39m
-[1622583761849] [32mINFO[39m (47729 on Rogerios-MacBook-Pro.local): [36mConfigured logger[39m
-Enabling inline tracing for this federated service. To disable, use ApolloServerPluginInlineTraceDisabled.
-[1622583762354] [32mINFO[39m (47729 on Rogerios-MacBook-Pro.local): [36mhttp://localhost:4004/[39m
