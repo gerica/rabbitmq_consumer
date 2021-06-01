@@ -8,4 +8,4 @@ echo "------> Update app from Git"
 git pull
 
 echo "------> Run new PM2 action"
-pm2 deploy ecosystem.config.json production-local --only RL-RabbitMQ-Consumer
+pm2 deploy ecosystem.config.json production-local
