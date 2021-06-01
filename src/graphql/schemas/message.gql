@@ -1,26 +1,30 @@
 """
 Mensagem de entrada
 """
-input MessageInput {
+input ConsumerMessageInput {
   msg: String
 }
 
 """
 Message de resultado
 """
-type MessageResult {
+type ConsumerMessageResult {
   id: String
   message: String
 }
 
 type Query {
   """
-  # Resultado
+  #### Versão do serviço de rabbitmq consumer
   """
-  getMessage: MessageResult
-  getAllMessages: [MessageResult]
+  versionRabbitMQConsumer: String
+  """
+  #### Resultado
+  """
+  getMessage: ConsumerMessageResult
+  getAllMessages: [ConsumerMessageResult]
 }
 
 type Mutation {
-  sendMessage(input: MessageInput): String
+  sendMessage(input: ConsumerMessageInput): String
 }

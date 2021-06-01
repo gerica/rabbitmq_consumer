@@ -4,7 +4,7 @@
       "name": "RL-RabbitMQ-Consumer-Local",
       "script": "src/server.js",
       "env": {
-        "PORT": 4002,
+        "PORT": 4004,
         "NODE_ENV": "development"
       },
       "err_file": "err.log",
